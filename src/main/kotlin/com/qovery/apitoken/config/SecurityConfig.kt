@@ -13,7 +13,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-    private val jwtRequestFilter: JwtRequestFilter
+    private val jwtRequestFilter: JwtRequestFilter,
+    private val apiTokenRequestFilter: ApiTokenRequestFilter
 ) : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http
@@ -24,6 +25,7 @@ class SecurityConfig(
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter::class.java)
+            .addFilterBefore(apiTokenRequestFilter, UsernamePasswordAuthenticationFilter::class.java)
             .authorizeRequests().mvcMatchers("/api/user").permitAll()
             .anyRequest().authenticated()
     }

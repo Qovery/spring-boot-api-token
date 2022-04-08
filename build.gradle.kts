@@ -23,6 +23,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("io.jsonwebtoken:jjwt-api:0.11.2")
     implementation("javax.xml.bind:jaxb-api:2.3.1")
+    implementation("org.unbroken-dome.base62:base62:1.1.0")
+    implementation("commons-codec:commons-codec:1.15")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.2")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.2")
